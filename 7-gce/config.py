@@ -43,12 +43,12 @@ CLOUDSQL_DATABASE = 'booksql'
 # Set this value to the Cloud SQL connection name, e.g.
 #   "project:region:cloudsql-instance".
 # You must also update the value in app.yaml.
-CLOUDSQL_CONNECTION_NAME = 'bookshelf-project-319721:us-central1:bookshelf'
+CLOUDSQL_CONNECTION_NAME = 'bookshelf-project-319721:us-central1:booksql'
 
 # The CloudSQL proxy is used locally to connect to the cloudsql instance.
 # To start the proxy, use:
 #
-#   $ cloud_sql_proxy -instances=bookshelf-project-319721:us-central1:bookshelf=tcp:3306
+#   $ cloud_sql_proxy -instances=bookshelf-project-319721:us-central1:booksql=tcp:3306
 #
 # Port 3306 is the standard MySQL port. If you need to use a different port,
 # change the 3306 to a different port number.
