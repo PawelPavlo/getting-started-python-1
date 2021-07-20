@@ -42,12 +42,13 @@ pip install --upgrade pip virtualenv
 # git requires $HOME and it's not set during the startup script.
 export HOME=/root
 git config --global credential.helper gcloud.sh
-git clone https://source.developers.google.com/p/$PROJECTID/r/[YOUR_REPO_NAME] /opt/app
-
+#git clone https://source.developers.google.com/p/$PROJECTID/r/[YOUR_REPO_NAME] /opt/app
+git clone --branch steps https://github.com/PawelPavlo/getting-started-python-1.git /opt/app
 # Install app dependencies
 virtualenv -p python3 /opt/app/7-gce/env
+# virtualenv -p python3 /
 source /opt/app/7-gce/env/bin/activate
-/opt/app/7-gce/env/bin/pip install -r /opt/app/7-gce/requirements.txt
+/opt/app/getting-started-python-1/7-gce/env/bin/pip install -r /opt/app/getting-started-python-1/7-gce/requirements.txt
 
 # Make sure the pythonapp user owns the application code
 chown -R pythonapp:pythonapp /opt/app
