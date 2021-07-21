@@ -48,7 +48,7 @@ git clone --branch steps https://github.com/PawelPavlo/getting-started-python-1.
 virtualenv -p python3 /opt/app/7-gce/env
 # virtualenv -p python3 /
 source /opt/app/7-gce/env/bin/activate
-/opt/app/getting-started-python-1/7-gce/env/bin/pip install -r /opt/app/getting-started-python-1/7-gce/requirements.txt
+/opt/app/7-gce/env/bin/pip install -r /opt/app/7-gce/requirements.txt
 
 # Make sure the pythonapp user owns the application code
 chown -R pythonapp:pythonapp /opt/app
