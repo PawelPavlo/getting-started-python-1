@@ -15,7 +15,7 @@
 
 set -x
 
-ZONE=us-central1-f
+ZONE=us-central1-a
 gcloud config set compute/zone $ZONE
 
 GROUP=frontend-group
