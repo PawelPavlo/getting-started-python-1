@@ -47,7 +47,6 @@ cp cloud_sql_proxy /usr/local/bin/cloud_sql_proxy
 cat >/etc/systemd/system/cloud-sql-proxy.service << EOF
 [Unit]
 Description=Connecting MySQL Client from Compute Engine using the Cloud SQL Proxy
-Documentation=https://cloud.google.com/sql/docs/mysql/connect-compute-engine
 Requires=networking.service
 After=networking.service
 
