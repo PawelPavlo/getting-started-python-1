@@ -30,13 +30,41 @@ service google-fluentd restart &
 apt-get update
 apt-get install -yq \
     git build-essential supervisor python python-dev python-pip libffi-dev \
-    libssl-dev
+    libssl-dev mysql-client
 
 # Create a pythonapp user. The application will run as this user.
 useradd -m -d /home/pythonapp pythonapp
 
 # pip from apt is out of date, so make it update itself and install virtualenv.
 pip install --upgrade pip virtualenv
+
+#Start get cloud sql-proxy-------PAVLO
+wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
+chmod +x cloud_sql_proxy
+cp cloud_sql_proxy /usr/local/bin/cloud_sql_proxy
+
+#Create Cloudsql service
+cat >/etc/systemd/system/cloud-sql-proxy.service << EOF
+[Unit]
+Description=Connecting MySQL Client from Compute Engine using the Cloud SQL Proxy
+Documentation=https://cloud.google.com/sql/docs/mysql/connect-compute-engine
+Requires=networking.service
+After=networking.service
+
+[Service]
+WorkingDirectory=/usr/local/bin
+ExecStart=/usr/local/bin/cloud_sql_proxy -instances=bookshelf-project-319721:us-central1-a:bookshelf=tcp:3306
+Restart=always
+StandardOutput=journal
+User=root
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl enable cloud-sql-proxy.service
+systemctl start cloud-sql-proxy.service
+
 
 # Get the source code from the Google Cloud Repository
 # git requires $HOME and it's not set during the startup script.
@@ -48,6 +76,9 @@ git clone -b steps https://github.com/PawelPavlo/getting-started-python-1.git /o
 virtualenv -p python3 /opt/app/7-gce/env
 # virtualenv -p python3 /
 source /opt/app/7-gce/env/bin/activate
+#create database infrastructure
+/opt/app/7-gce/env/bin/python /opt/app/7-gce/bookshelf/model_cloudsql.py
+
 /opt/app/7-gce/env/bin/pip install -r /opt/app/7-gce/requirements.txt
 
 # Make sure the pythonapp user owns the application code
