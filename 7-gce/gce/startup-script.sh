@@ -53,7 +53,7 @@ After=networking.service
 
 [Service]
 WorkingDirectory=/usr/local/bin
-ExecStart=/usr/local/bin/cloud_sql_proxy -instances=bookshelf-project-319721:us-central1-a:bookshelf=tcp:3306
+ExecStart=/usr/local/bin/cloud_sql_proxy -instances=bookshelf-project-319721:us-central1:booksql=tcp:3306
 Restart=always
 StandardOutput=journal
 User=root
