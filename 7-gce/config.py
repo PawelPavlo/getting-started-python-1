@@ -39,7 +39,7 @@ PROJECT_ID = 'bookshelf-project-319721'
 # instance.
 CLOUDSQL_USER = 'root'
 CLOUDSQL_PASSWORD = '12345'
-CLOUDSQL_DATABASE = 'sql-bookshelf1'
+CLOUDSQL_DATABASE = 'my-database'
 # Set this value to the Cloud SQL connection name, e.g.
 #   "project:region:cloudsql-instance".
 # You must also update the value in app.yaml.
