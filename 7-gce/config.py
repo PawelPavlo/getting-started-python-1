@@ -39,11 +39,11 @@ PROJECT_ID = 'bookshelf-project-319721'
 # instance.
 CLOUDSQL_USER = 'root'
 CLOUDSQL_PASSWORD = '12345'
-CLOUDSQL_DATABASE = 'sql-bookshelf'
+CLOUDSQL_DATABASE = 'sql-bookshelf1'
 # Set this value to the Cloud SQL connection name, e.g.
 #   "project:region:cloudsql-instance".
 # You must also update the value in app.yaml.
-CLOUDSQL_CONNECTION_NAME = 'bookshelf-project-319721:us-central1:sql-bookshelf'
+CLOUDSQL_CONNECTION_NAME = 'bookshelf-project-319721:us-central1:sql-bookshelf1'
 
 # The CloudSQL proxy is used locally to connect to the cloudsql instance.
 # To start the proxy, use:
